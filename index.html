@@ -725,3 +725,10 @@ function go(d){t.scrollBy({left:d*360,behavior:'smooth'});}
 var p=document.getElementById('scene-prev'),n=document.getElementById('scene-next');
 if(p)p.addEventListener('click',function(){go(-1)});if(n)n.addEventListener('click',function(){go(1)});})();
 </script>
+
+<script>
+(function(){var f=document.querySelector('form[action*="formsubmit.co"]');if(!f||!window.fetch||!window.FormData)return;
+f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('button[type=submit]');if(b){b.disabled=true;b.setAttribute('data-label',b.textContent);b.textContent='送信中…';}
+var url=f.action.replace('formsubmit.co/','formsubmit.co/ajax/');
+fetch(url,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(r.ok&&String(j.success)==='true'){location.href='/thanks/';}else{throw new Error('send failed');}});}).catch(function(){if(b){b.disabled=false;b.textContent=b.getAttribute('data-label');}f.submit();});});})();
+</script>
