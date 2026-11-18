@@ -21,10 +21,10 @@ layout: base
 <ul style="margin: 16px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: #2B6E8C">{% for t in page.tags %}<li>#{{ t }}</li>{% endfor %}</ul>
 {%- endif %}
 
-<div class="post-cover post-cover--{{ page.cover | default: 'green' }}" style="margin-top: 28px; height: auto; aspect-ratio: 16 / 9; border-radius: 20px; padding: 7%" role="img" aria-label="記事のカバー：{{ page.title }}">
+{% if page.image %}<img class="post-thumb post-thumb--hero" src="{{ page.image }}" alt="記事のカバー：{{ page.title }}" width="630" height="354" fetchpriority="high">{% else %}<div class="post-cover post-cover--{{ page.cover | default: 'green' }}" style="margin-top: 28px; height: auto; aspect-ratio: 16 / 9; border-radius: 20px; padding: 7%" role="img" aria-label="記事のカバー：{{ page.title }}">
 <span class="en post-cover__cat">{{ page.cat }}</span>
 <span class="post-cover__text" style="font-size: clamp(24px, 3.6vw, 40px)">{{ page.cover_text }}</span>
-</div>
+</div>{% endif %}
 
 <div class="post-body">
 {{ content }}
