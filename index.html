@@ -727,8 +727,12 @@ if(p)p.addEventListener('click',function(){go(-1)});if(n)n.addEventListener('cli
 </script>
 
 <script>
-(function(){var f=document.querySelector('form[action*="formsubmit.co"]');if(!f||!window.fetch||!window.FormData)return;
-f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('button[type=submit]');if(b){b.disabled=true;b.setAttribute('data-label',b.textContent);b.textContent='送信中…';}
-var url=f.action.replace('formsubmit.co/','formsubmit.co/ajax/');
-fetch(url,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(r.ok&&String(j.success)==='true'){location.href='/thanks/';}else{throw new Error('send failed');}});}).catch(function(){if(b){b.disabled=false;b.textContent=b.getAttribute('data-label');}f.submit();});});})();
+(function(){var f=document.querySelector('form[action*="formsubmit.co"]');if(!f)return;
+var fr=document.createElement('iframe');fr.name='fs-frame';fr.title='送信処理';fr.setAttribute('aria-hidden','true');fr.tabIndex=-1;fr.style.cssText='position:absolute;width:0;height:0;border:0;visibility:hidden';document.body.appendChild(fr);
+var cap=document.createElement('input');cap.type='hidden';cap.name='_captcha';cap.value='false';f.appendChild(cap);
+var msg=document.createElement('p');msg.setAttribute('role','status');msg.style.cssText='margin:0;font-size:13px;color:#B42318;text-align:center';f.appendChild(msg);
+var sending=false,timer,b=f.querySelector('button[type=submit]'),label=b?b.textContent:'';
+f.addEventListener('submit',function(){sending=true;f.target='fs-frame';msg.textContent='';if(b){b.disabled=true;b.textContent='送信中…';}
+timer=setTimeout(function(){if(!sending)return;sending=false;if(b){b.disabled=false;b.textContent=label;}msg.textContent='送信に時間がかかっています。少し待ってから、もう一度お試しください。';},60000);});
+fr.addEventListener('load',function(){if(!sending)return;sending=false;clearTimeout(timer);location.href='/thanks/';});})();
 </script>
