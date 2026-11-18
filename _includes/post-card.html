@@ -1,0 +1,14 @@
+{%- assign p = include.post -%}
+<a href="{{ p.url }}" class="card-hover" style="display: flex; flex-direction: column; text-decoration: none; color: #1D2B27; border: 1px solid #E4E6E0; border-radius: 20px; overflow: hidden; background: #FAFAF7">
+<div class="post-cover post-cover--{{ p.cover | default: 'green' }}">
+<span class="en post-cover__cat">{{ p.cat | default: 'BLOG' }}</span>
+<span class="post-cover__text">{{ p.cover_text | default: p.title }}</span>
+</div>
+<div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; color: #55635E">
+<span class="en">{{ p.date | date: "%Y.%m.%d" }}</span>
+<span>ものづくり担当</span>
+</div>
+<h3 style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: 700">{{ p.title }}</h3>
+</div>
+</a>

@@ -1,0 +1,14 @@
+---
+layout: base
+title: ものづくり担当のブログ
+description: 3Dプリントや製造・ものづくりにまつわる記事を更新中。3Dプリンターへの依頼のコツや、制作の裏側をお届けします。
+---
+<section class="page-wrap">
+<nav class="crumb" aria-label="パンくずリスト"><a href="/">トップ</a><span aria-hidden="true">/</span><span>ブログ</span></nav>
+<p class="en" style="margin: 32px 0 12px; font-size: 13px; font-weight: 700; color: #1F5B4B">BLOG</p>
+<h1 style="margin: 0; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.45; font-weight: 900">ものづくり担当のブログ</h1>
+<p style="margin: 12px 0 0; font-size: 15px; color: #3B4A45">3Dプリントや製造・ものづくりにまつわる記事を更新中！</p>
+<div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px">
+{% for post in site.posts %}{% include post-card.html post=post %}{% endfor %}
+</div>
+</section>

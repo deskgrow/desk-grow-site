@@ -1,0 +1,62 @@
+---
+layout: base
+---
+<div class="page-wrap" style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<article style="flex: 999 1 640px; min-width: 0; max-width: 780px">
+<nav class="crumb" aria-label="パンくずリスト"><a href="/">トップ</a><span aria-hidden="true">/</span><a href="/blog/">ブログ</a><span aria-hidden="true">/</span><span>{{ page.category_ja }}</span></nav>
+
+{%- if page.repost %}
+<div class="repost">
+<span style="display: flex; align-items: center; gap: 10px"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2B6E8C" stroke-width="1.8" aria-hidden="true"><path d="M4 7h9a4 4 0 0 1 0 8H8"></path><path d="M7 4L4 7l3 3"></path></svg><span>この記事は、<strong>スキルマーケット</strong>で公開したブログ記事を再掲載しています。</span></span>
+{%- if page.original_url %}<a href="{{ page.original_url }}" rel="nofollow noopener" target="_blank">元の記事を見る</a>{% endif %}
+</div>
+{%- endif %}
+
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 13px">
+<time class="en" datetime="{{ page.date | date_to_xmlschema }}" style="font-weight: 700; color: #55635E">{{ page.date | date: "%Y.%m.%d" }}</time>
+<span style="background: #1D2B27; color: #FFFFFF; border-radius: 999px; padding: 2px 12px; font-weight: 700">{{ page.category_ja }}</span>
+</div>
+<h1 style="margin: 14px 0 0; font-size: clamp(26px, 3.2vw, 36px); line-height: 1.5; font-weight: 900">{{ page.title }}</h1>
+{%- if page.tags %}
+<ul style="margin: 16px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: #2B6E8C">{% for t in page.tags %}<li>#{{ t }}</li>{% endfor %}</ul>
+{%- endif %}
+
+<div class="post-cover post-cover--{{ page.cover | default: 'green' }}" style="margin-top: 28px; height: auto; aspect-ratio: 16 / 9; border-radius: 20px; padding: 7%" role="img" aria-label="記事のカバー：{{ page.title }}">
+<span class="en post-cover__cat">{{ page.cat }}</span>
+<span class="post-cover__text" style="font-size: clamp(24px, 3.6vw, 40px)">{{ page.cover_text }}</span>
+</div>
+
+<div class="post-body">
+{{ content }}
+</div>
+
+<a class="service-card" href="/#price" style="margin-top: 40px">
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 700; color: #1F5B4B">このサイトからのご依頼がいちばんお得です</span>
+<span style="font-size: 17px; font-weight: 900; line-height: 1.5">データなしOK！写真や手書きの図からでも3Dプリントします</span>
+<span style="font-size: 13px; color: #55635E">データ作成＋3Dプリント／送料込み</span>
+</div>
+<span style="display: flex; align-items: baseline; gap: 2px"><span class="en" style="font-size: 32px; font-weight: 700">8,000</span><span style="font-weight: 700">円〜</span></span>
+</a>
+
+<nav aria-label="前後の記事" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #E4E6E0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 700">
+{% if page.previous %}<a href="{{ page.previous.url }}">← 前の記事</a>{% else %}<span></span>{% endif %}
+<a href="/blog/">記事一覧へ</a>
+{% if page.next %}<a href="{{ page.next.url }}">次の記事 →</a>{% else %}<span></span>{% endif %}
+</nav>
+</article>
+
+<aside style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<div style="background: #1F5B4B; color: #FAFAF7; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<p class="en" style="margin: 0; font-size: 12px; font-weight: 700; color: #A9D3E3">CONTACT</p>
+<p style="margin: 0; font-size: 18px; font-weight: 900; line-height: 1.6">写真1枚から、<br>お気軽にご相談ください。</p>
+<a href="/#contact" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; background: #FFFFFF; color: #1F5B4B; text-decoration: none; font-weight: 700">無料で相談する</a>
+</div>
+<div class="side-box">
+<p style="margin: 0 0 8px; font-weight: 900">新着記事</p>
+<ul style="margin: 0; padding: 0; list-style: none">
+{% for p in site.posts limit:5 %}<li style="border-bottom: 1px dashed #D5DAD4; padding: 12px 0"><a href="{{ p.url }}" style="display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: #1D2B27"><span class="en" style="font-size: 12px; color: #55635E">{{ p.date | date: "%Y.%m.%d" }}</span><span style="font-size: 14px; line-height: 1.6; font-weight: 500">{{ p.title }}</span></a></li>{% endfor %}
+</ul>
+</div>
+</aside>
+</div>

@@ -1,0 +1,25 @@
+body{margin:0;background:#FAFAF7}
+*{box-sizing:border-box}
+a{color:#1F5B4B}a:hover{color:#143D33}
+.en{font-family:'Space Grotesk','Zen Kaku Gothic New',sans-serif;letter-spacing:.04em}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq{animation:marq 38s linear infinite}
+.track{scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.card-hover{transition:transform .25s ease, box-shadow .25s ease}
+.card-hover:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(29,43,39,.10)}
+.navlinks a{color:#1D2B27;text-decoration:none}
+.navlinks a:hover{color:#1F5B4B}
+.tag{display:inline-flex;align-items:center;gap:2px;min-height:40px;padding:0 14px;border-radius:999px;background:#FFFFFF;border:1.5px solid #D5DAD4;color:#1D2B27;text-decoration:none;font-weight:700;font-size:14px;transition:border-color .2s ease, background .2s ease}
+.tag:hover{border-color:#1F5B4B;background:#E6EFEC;color:#1D2B27}
+.tag::before{content:"#";color:#1F5B4B;margin-right:1px}
+.tag-s{display:inline-flex;align-items:center;padding:6px 12px;border-radius:8px;text-decoration:none;color:#1D2B27;font-weight:700;font-size:13px}
+.tag-s::before{content:"#";color:#1F5B4B;margin-right:2px}
+.tag-s:hover{text-decoration:underline}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] .plus{transform:rotate(45deg)}
+.plus{transition:transform .2s ease}
+input,select,textarea{font:inherit;color:#1D2B27}
+@media (max-width:860px){.navlinks{display:none !important}.hero-visual{min-height:360px !important}.tag{font-size:13px;padding:0 11px;min-height:40px}}
+@media (prefers-reduced-motion:reduce){.marq{animation:none}}

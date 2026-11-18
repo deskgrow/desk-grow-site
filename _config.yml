@@ -1,0 +1,19 @@
+title: DeskGROW 3Dプリント工房
+description: 3Dプリンターの依頼・3Dプリントサービス。写真や手書きの図から、1個から製作します。
+url: https://desk-grow.jp
+lang: ja
+timezone: Asia/Tokyo
+permalink: /blog/:year:month:day-:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+plugins:
+  - jekyll-sitemap
+exclude:
+  - build.py
+  - _raw_index.html
+  - _raw_blog.html
+  - README.md
+  - Gemfile
+  - Gemfile.lock
